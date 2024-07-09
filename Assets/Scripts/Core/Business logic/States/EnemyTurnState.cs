@@ -65,15 +65,13 @@ public class EnemyTurnState : BaseState
             cardSelected.UpdateOrderInLayer(300);
             slotSelected.PlaceCard(cardSelected);
 
-            //update to verify whether there are any turns remaining instead of checking
-            //only that other slots are not open
-            if (GameController.Instance.Board.Slots.Any(slot => !slot.Occupied))
+            if (GameController.Instance.GameCards.All(placed => placed.Placed))
             {
-                turnController.ChangeState(new PlayerTurnState());
+                turnController.ChangeState(new EndMatchState());
             }
             else
             {
-                turnController.ChangeState(new EndMatchState());
+                turnController.ChangeState(new PlayerTurnState());
             }
         }
     }

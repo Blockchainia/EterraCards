@@ -42,6 +42,8 @@ public class PlayerTurnState : BaseState
 
         if (turnController.TurnEnded)
         {
+            //update to verify whether there are any turns remaining
+            //only that other slots are not open
             if (GameController.Instance.Board.Slots.Any(slot => !slot.Occupied))
             {
                 turnController.ChangeState(new EnemyTurnState());

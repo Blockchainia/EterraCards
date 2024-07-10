@@ -5,6 +5,7 @@ public class EnemyTurnState : BaseState
 {
     private float timeToAction = 0f;
     private float timeToCalculateCardPosition = 0f;
+    //behaviorProbability == difficulty
     private float behaviourProbability = 0.7f;
     private float MAX_THINKING_TIME;
     private bool finished = false;
@@ -20,7 +21,7 @@ public class EnemyTurnState : BaseState
         timeToAction = 0f;
         turnController.UpdateTimer();
         turnController.TeamTurn = Team.RED;
-        MAX_THINKING_TIME = UnityEngine.Random.Range(0.7f, 1.2f);
+        MAX_THINKING_TIME = UnityEngine.Random.Range(1f, 1.5f);
         turnController.TurnIndicator.transform.position = new Vector3(Mathf.Abs(turnController.TurnIndicator.transform.position.x) * -1,
                                                                     turnController.TurnIndicator.transform.position.y,
                                                                     turnController.TurnIndicator.transform.position.z);

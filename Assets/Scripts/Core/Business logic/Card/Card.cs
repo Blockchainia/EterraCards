@@ -116,6 +116,11 @@ public class Card : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
                     capturedCards.Add(enemy);
                 }
 
+                /**
+                    Insert Brawl Mechanic
+                */
+
+                
                 //Same rule capture
                 if (DataController.Instance.SettingData.SameRule)
                 {
@@ -225,6 +230,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
                     capturedCards.Add(enemy);
                 }
 
+
                 //Same rule capture
                 sameRuleCards.Add(new KeyValuePair<Card, bool>(enemy, CardData.Power[i] == enemy.CardData.Power[powerIndex]));
 
@@ -234,6 +240,8 @@ public class Card : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
                 {
                     plusRuleCards.Add(new KeyValuePair<Card, int>(enemy, CardData.Power[i] + enemy.CardData.Power[powerIndex]));
                 }
+
+                
             }
         }
 

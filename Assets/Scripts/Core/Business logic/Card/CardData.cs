@@ -8,8 +8,12 @@ public class CardData : ScriptableObject, ITableElement
     [field: SerializeField] public LocalizedString CardNameKey { get; set; }
     [field: SerializeField] public LocalizedString CardDescriptionKey { get; set; }
     [field: Range(1, 10)][field: Min(1)][field: SerializeField] public int[] Power { get; set; } = new int[4];
-    [field: SerializeField] public Sprite CardSprite { get; set; }
+    [field: SerializeField] public Sprite CardSprite { get; set; }  
     [field: SerializeField] public ElementType ElementType { get; set; }
+    [field: Range(1, 16)][field: Min(1)][field: SerializeField] public int[] BrawlArrow { get; set; } = new int[4];
+    [field: SerializeField] public BrawlType BrawlType { get; set; }
+    
+
 }
 
 public enum ElementType
@@ -24,4 +28,12 @@ public enum ElementType
     HOLY = 7,
     LIGHTNING = 8,
     DARKNESS = 9
+}
+
+public enum BrawlType
+{
+    PHYSICAL = 0,
+    SPELL = 1,
+    DEFENSE = 2,
+    ACE = 3
 }

@@ -110,11 +110,17 @@ public class Card : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
 
             if (enemy != null && enemy.Placed)
             {
-                //Normal capture
+                //Cardinal Direction capture
                 if (CardData.Power[i] > enemy.CardData.Power[powerIndex] && enemy.Team != this.Team)
                 {
                     capturedCards.Add(enemy);
                 }
+
+                //Ordinal Direction Capture
+                // if(CardData.BattleArrow[i] > enemy.CardData.Power[] && enemy.Team != this.Team)
+                // {
+
+                // }
 
                 //Same rule capture
                 if (DataController.Instance.SettingData.SameRule)

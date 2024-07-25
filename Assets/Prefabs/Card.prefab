@@ -315,7 +315,7 @@ Transform:
   m_GameObject: {fileID: 306409810731829918}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.245, y: 0.475, z: 0}
+  m_LocalPosition: {x: -0.245, y: 0.45, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -334,8 +334,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2392aa86aa59d440d81054cc96056e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastOffset: {x: 0, y: 0, z: 0}
-  raycastVector: {x: 0, y: 0, z: 0}
+  raycastOffset: {x: -0.6, y: 0, z: 0}
+  raycastVector: {x: -2, y: 2, z: 0}
   cornerName: 1
   <Background>k__BackingField: {fileID: 0}
   <Frame>k__BackingField: {fileID: 0}
@@ -1021,6 +1021,11 @@ MonoBehaviour:
   - {fileID: 2171726251250935825}
   - {fileID: 599145693927394122}
   - {fileID: 5503585314037388838}
+  corners:
+  - {fileID: 4816041315817993678}
+  - {fileID: 5571603395285109535}
+  - {fileID: 4568752211403379181}
+  - {fileID: 9003725227199522744}
   startPosition: {x: 0, y: 0, z: 0}
   <Team>k__BackingField: 0
   <Power>k__BackingField: 0
@@ -1897,7 +1902,7 @@ Transform:
   m_GameObject: {fileID: 6199562015807296033}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.245, y: -0.475, z: 0}
+  m_LocalPosition: {x: -0.245, y: -0.45, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1916,8 +1921,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2392aa86aa59d440d81054cc96056e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastOffset: {x: 0, y: 0, z: 0}
-  raycastVector: {x: 0, y: 0, z: 0}
+  raycastOffset: {x: -0.6, y: 0, z: 0}
+  raycastVector: {x: -2, y: -2, z: 0}
   cornerName: 2
   <Background>k__BackingField: {fileID: 0}
   <Frame>k__BackingField: {fileID: 0}
@@ -2994,7 +2999,7 @@ Transform:
   m_GameObject: {fileID: 8376471398603148378}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7, y: -0.475, z: 0}
+  m_LocalPosition: {x: 0.7, y: -0.45, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3013,8 +3018,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2392aa86aa59d440d81054cc96056e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastOffset: {x: 0, y: 0, z: 0}
-  raycastVector: {x: 0, y: 0, z: 0}
+  raycastOffset: {x: -0.25, y: 0, z: 0}
+  raycastVector: {x: 2, y: -2, z: 0}
   cornerName: 3
   <Background>k__BackingField: {fileID: 0}
   <Frame>k__BackingField: {fileID: 0}
@@ -3044,7 +3049,7 @@ Transform:
   m_GameObject: {fileID: 8732114123753131814}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.0039269803, z: 0, w: 0.9999923}
-  m_LocalPosition: {x: 0.7, y: 0.475, z: 0}
+  m_LocalPosition: {x: 0.7, y: 0.45, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3063,8 +3068,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2392aa86aa59d440d81054cc96056e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastOffset: {x: 0, y: 0, z: 0}
-  raycastVector: {x: 0, y: 0, z: 0}
+  raycastOffset: {x: -0.3, y: 0, z: 0}
+  raycastVector: {x: 2, y: 2, z: 0}
   cornerName: 0
   <Background>k__BackingField: {fileID: 0}
   <Frame>k__BackingField: {fileID: 0}

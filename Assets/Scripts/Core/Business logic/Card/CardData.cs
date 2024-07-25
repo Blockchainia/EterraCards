@@ -13,7 +13,15 @@ public class CardData : ScriptableObject, ITableElement
     [field: SerializeField] public BrawlType BrawlType { get; set; }
     [field: SerializeField] public bool[] BattleArrow { get; set; } = new bool[4];
     [field: Range(1, 16)][field: Min(1)][field: SerializeField] public int[] Genetics { get; set; } = new int[4];
-
+   
+    private void Awake()
+        {
+            //For Testing Purposes
+            Genetics[0] = 1;
+            Genetics[1] = 2;
+            Genetics[2] = 3;
+            Genetics[3] = 4;
+        }
 }
 
 public enum ElementType

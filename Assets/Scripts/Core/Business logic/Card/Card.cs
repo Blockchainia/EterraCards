@@ -49,6 +49,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
     public void UpdateRaycast(LayerMask layer)
     {
         GameController.Instance.UpdateRaycastPhysics(layer);
+        
     }
 
     /// <summary>
@@ -116,6 +117,8 @@ public class Card : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
                 if (CardData.Power[i] > enemy.CardData.Power[powerIndex] && enemy.Team != this.Team)
                 {
                     capturedCards.Add(enemy);
+                    Debug.Log("Cardinal Capture");
+
                 }
 
                 //Same rule capture
@@ -133,34 +136,35 @@ public class Card : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
             }
         }
 
-        //Ordinal Direction Capture
-        // for (int i = 0; i < corners.Length; i++)
-        // {
-        //     //Getting opposite side of power of enemy
-        //     Card enemy = this.corners[i].GetTarget();
-        //     powerIndex = i + 2;
+        // Ordinal Direction Capture
+        for (int i = 0; i < corners.Length; i++)
+        {
+            //Getting opposite corner of of enemy
+            Card enemy = this.corners[i].GetTarget();
+            if(enemy == null)
+            {
+                Debug.Log("Enemy Found: null");
 
-        //     if (powerIndex >= sides.Length)
-        //     {
-        //         powerIndex = powerIndex % 2;
-        //     }
+            }
+            else 
+            {
+                Debug.Log("Enemy Found: " + enemy);
+            }
 
-        //     if (enemy != null && enemy.Placed)
-        //     {
-        //         //Cardinal Direction capture
-        //         if (CardData.Power[i] > enemy.CardData.Power[powerIndex] && enemy.Team != this.Team)
-        //         {
-        //             capturedCards.Add(enemy);
-        //         }
+            powerIndex = this.CardData.Genetics[0];
 
-        //         //Ordinal Direction Capture
-        //         // if(CardData.BattleArrow[i] > enemy.CardData.BAttleArrow[] && enemy.Team != this.Team)
-        //         // {
+            if (enemy != null && enemy.Placed)
+            {
+                //Ordinal Direction Capture
+                if (CardData.Genetics[1] > enemy.CardData.Genetics[0] && enemy.Team != this.Team)
+                {
+                    Debug.Log("Ordinal Capture");
 
-        //         // }
+                    capturedCards.Add(enemy);
+                }
 
-        //     }
-        // }
+            }
+        }
 
 
         if (!isCombo)

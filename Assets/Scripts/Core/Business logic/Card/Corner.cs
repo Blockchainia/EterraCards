@@ -17,7 +17,7 @@ public class Corner : MonoBehaviour
     {
         LayerMask hitLaterMask = 1 << LayerMask.NameToLayer("PlayerCard") | 1 << LayerMask.NameToLayer("EnemyCard");
         hitLaterMask |= 1 << LayerMask.NameToLayer("Wall");
-        RaycastHit2D hit = Physics2D.Raycast(this.transform.position + this.raycastOffset, this.raycastVector, 1f, hitLaterMask);
+        RaycastHit2D hit = Physics2D.Raycast(this.transform.position + this.raycastOffset, this.raycastVector, 1.5f, hitLaterMask);
         return hit.transform?.gameObject.GetComponent<Card>();
     }
 

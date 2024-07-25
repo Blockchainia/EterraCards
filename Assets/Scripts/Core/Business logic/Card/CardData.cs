@@ -10,9 +10,9 @@ public class CardData : ScriptableObject, ITableElement
     [field: Range(1, 10)][field: Min(1)][field: SerializeField] public int[] Power { get; set; } = new int[4];
     [field: SerializeField] public Sprite CardSprite { get; set; }  
     [field: SerializeField] public ElementType ElementType { get; set; }
-    [field: Range(1, 16)][field: Min(1)][field: SerializeField] public int[] BrawlArrow { get; set; } = new int[4];
     [field: SerializeField] public BrawlType BrawlType { get; set; }
-    
+    [field: SerializeField] public bool[] BattleArrow { get; set; } = new bool[4];
+    [field: Range(1, 16)][field: Min(1)][field: SerializeField] public int[] Genetics { get; set; } = new int[4];
 
 }
 

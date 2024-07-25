@@ -118,12 +118,6 @@ public class Card : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
                     capturedCards.Add(enemy);
                 }
 
-                //Ordinal Direction Capture
-                // if(CardData.BattleArrow[i] > enemy.CardData.Power[] && enemy.Team != this.Team)
-                // {
-
-                // }
-
                 //Same rule capture
                 if (DataController.Instance.SettingData.SameRule)
                 {

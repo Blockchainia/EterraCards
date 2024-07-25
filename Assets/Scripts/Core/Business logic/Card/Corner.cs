@@ -1,14 +1,13 @@
 using TMPro;
 using UnityEngine;
 
-public class Side : MonoBehaviour
+public class Corner : MonoBehaviour
 {
     [SerializeField] private Vector3 raycastOffset;
     [SerializeField] private Vector3 raycastVector;
-    [SerializeField] private SideName sideName;
+    [SerializeField] private cornerName cornerName;
     [field: SerializeField] public SpriteRenderer Background { get; set; }
     [field: SerializeField] public SpriteRenderer Frame { get; set; }
-    [field: SerializeField] public TMP_Text PowerText { get; set; }
 
     /// <summary>
     /// Throws a raycast and gets the card component.
@@ -32,10 +31,10 @@ public class Side : MonoBehaviour
     }
 }
 
-public enum SideName
+public enum cornerName
 {
-    UP = 0,
-    RIGHT = 1,
-    DOWN = 2,
-    LEFT = 3
+    NORTH_EAST = 0,
+    NORTH_WEST = 1, 
+    SOUTH_WEST = 2,
+    SOUTH_EAST = 3
 }

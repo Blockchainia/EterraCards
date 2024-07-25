@@ -140,33 +140,33 @@ public class Card : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
         }
 
         //Ordinal Direction Capture
-        for (int i = 0; i < corners.Length; i++)
-        {
-            //Getting opposite side of power of enemy
-            Card enemy = this.corners[i].GetTarget();
-            powerIndex = i + 2;
+        // for (int i = 0; i < corners.Length; i++)
+        // {
+        //     //Getting opposite side of power of enemy
+        //     Card enemy = this.corners[i].GetTarget();
+        //     powerIndex = i + 2;
 
-            if (powerIndex >= sides.Length)
-            {
-                powerIndex = powerIndex % 2;
-            }
+        //     if (powerIndex >= sides.Length)
+        //     {
+        //         powerIndex = powerIndex % 2;
+        //     }
 
-            if (enemy != null && enemy.Placed)
-            {
-                //Cardinal Direction capture
-                if (CardData.Power[i] > enemy.CardData.Power[powerIndex] && enemy.Team != this.Team)
-                {
-                    capturedCards.Add(enemy);
-                }
+        //     if (enemy != null && enemy.Placed)
+        //     {
+        //         //Cardinal Direction capture
+        //         if (CardData.Power[i] > enemy.CardData.Power[powerIndex] && enemy.Team != this.Team)
+        //         {
+        //             capturedCards.Add(enemy);
+        //         }
 
-                //Ordinal Direction Capture
-                // if(CardData.BattleArrow[i] > enemy.CardData.BAttleArrow[] && enemy.Team != this.Team)
-                // {
+        //         //Ordinal Direction Capture
+        //         // if(CardData.BattleArrow[i] > enemy.CardData.BAttleArrow[] && enemy.Team != this.Team)
+        //         // {
 
-                // }
+        //         // }
 
-            }
-        }
+        //     }
+        // }
 
 
         if (!isCombo)

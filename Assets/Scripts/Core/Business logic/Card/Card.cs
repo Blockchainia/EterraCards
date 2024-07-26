@@ -99,7 +99,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
         List<KeyValuePair<Card, bool>> sameRuleCards = new List<KeyValuePair<Card, bool>>();
         List<KeyValuePair<Card, int>> plusRuleCards = new List<KeyValuePair<Card, int>>();
 
-        // Cardinal Direction Capture
+        // Cardinal Direction Capture (Side)
         for (int i = 0; i < sides.Length; i++)
         {
             //Getting opposite side of power of enemy
@@ -136,27 +136,27 @@ public class Card : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
             }
         }
 
-        // Ordinal Direction Capture
+        // Ordinal Direction Capture (Corner)
         for (int i = 0; i < corners.Length; i++)
         {
             //Getting opposite corner of of enemy
             Card enemy = this.corners[i].GetTarget();
-            if(enemy == null)
-            {
-                Debug.Log("Enemy Found: null");
-
-            }
-            else 
-            {
-                Debug.Log("Enemy Found: " + enemy);
-            }
-
-            powerIndex = this.CardData.Genetics[0];
+            //For Testing Purposes
+            //Genetic 0 = Physical Strength
+            //Genetic 1 = Spell Strength
+            //Genetic 2 = Physical Defense 
+            //Genetic 3 = Magic Defense 
+            //Genetic 4 = Earth
+            //Genetic 5 = Water
+            //Genetic 6 = Fire
+            //Genetic 7 = Wind
+            //Genetic 8 = Void
 
             if (enemy != null && enemy.Placed)
             {
+                Debug.Log("Attacking card: " + CardData.Genetics[0] +  " vs Resting card: " + enemy.CardData.Genetics[0]);
                 //Ordinal Direction Capture
-                if (CardData.Genetics[1] > enemy.CardData.Genetics[0] && enemy.Team != this.Team)
+                if (CardData.Genetics[0] > enemy.CardData.Genetics[0] && enemy.Team != this.Team)
                 {
                     Debug.Log("Ordinal Capture");
 

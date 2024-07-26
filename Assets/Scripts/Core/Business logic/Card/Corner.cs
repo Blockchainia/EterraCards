@@ -5,9 +5,10 @@ public class Corner : MonoBehaviour
 {
     [SerializeField] private Vector3 raycastOffset;
     [SerializeField] private Vector3 raycastVector;
-    [SerializeField] private cornerName cornerName;
+    [SerializeField] private CornerName CornerName;
     [field: SerializeField] public SpriteRenderer Background { get; set; }
     [field: SerializeField] public SpriteRenderer Frame { get; set; }
+
 
     /// <summary>
     /// Throws a raycast and gets the card component.
@@ -31,7 +32,7 @@ public class Corner : MonoBehaviour
     }
 }
 
-public enum cornerName
+public enum CornerName
 {
     NORTH_EAST = 0,
     NORTH_WEST = 1, 

@@ -1,6 +1,5 @@
-# 🎴 Triple Triad 🎴
-Triple Triad minigame from Final Fantasy VIII made in Unity 2022.1. 
-By default all rules are enabled.
+# 🎴 EterraCards 🎴
+EterraCards is a card game intended as a launch point and companion app for a suite of web3 interconnected games. 
 
 ## User interface 👀
 ### Menu
@@ -22,7 +21,7 @@ By default all rules are enabled.
 <img src="https://user-images.githubusercontent.com/25460362/180471574-48165ca6-7663-4044-9058-8e05c1a66991.png" width="800" height="450" alt="Deck editor image"/>
 
 ### Gameplay
-<img src="https://user-images.githubusercontent.com/25460362/180471904-b5a14376-5bed-462b-a85f-072beca7dc99.png" width="800" height="450" alt="Gameplay image"/>
+<img src="ReadmeAssets/Gameplay.png" width="800" height="450" alt="Gameplay image"/>
 
 ## How to play? 🎮
 You are the blue team and your objective is to capture as many cards from the red team as possible.

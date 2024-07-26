@@ -1,4 +1,5 @@
 using static System.Random;
+using System;
 using UnityEngine;
 using UnityEngine.Localization;
 
@@ -17,21 +18,18 @@ public class CardData : ScriptableObject, ITableElement
    
     private void Awake()
     {
-        //For Testing Purposes
         //Genetic 0 = Physical Strength
         //Genetic 1 = Spell Strength
         //Genetic 2 = Physical Defense 
         //Genetic 3 = Magic Defense 
-        //Genetic 4 = Earth
-        //Genetic 5 = Water
-        //Genetic 6 = Fire
-        //Genetic 7 = Wind
-        //Genetic 8 = Void
-        UpdateGeneticsArray();
-
+        //Genetic 4 = Earth Adeptness
+        //Genetic 5 = Water Adeptness
+        //Genetic 6 = Fire Adeptness
+        //Genetic 7 = Wind Adeptness
+        UpdateGenetics();
     }
-    
-    public void UpdateGeneticsArray()
+
+    public void UpdateGenetics()
     {
         System.Random random = new System.Random();
         
@@ -39,6 +37,9 @@ public class CardData : ScriptableObject, ITableElement
         {
             Genetics[i] = random.Next(1, 17); // Generates a random integer between 1 and 16 (inclusive)
         }
+
+        BrawlType[] values = (BrawlType[])Enum.GetValues(typeof(BrawlType));
+        BrawlType = (BrawlType)values.GetValue(random.Next(values.Length));
     }
 }
 

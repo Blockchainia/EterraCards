@@ -8,7 +8,7 @@ public class TurnController : MonoBehaviour
     [field: SerializeField] public Team TeamTurn { get; set; }
     [field: SerializeField] public SpriteRenderer TurnIndicator { get; set; }
     [field: SerializeField] public float TurnTimer { get; set; }
-    public const float MAX_TURN_TIMER = 10.5f;
+    public const float MAX_TURN_TIMER = 20f;
     
     [HideInInspector] public bool TurnEnded { get; set; } = false;
     public Action<float, bool> OnVisibilityUpdated { get; set; }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -141,26 +142,71 @@ public class Card : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
         {
             //Getting opposite corner of of enemy
             Card enemy = this.corners[i].GetTarget();
-            //For Testing Purposes
             //Genetic 0 = Physical Strength
             //Genetic 1 = Spell Strength
             //Genetic 2 = Physical Defense 
             //Genetic 3 = Magic Defense 
-            //Genetic 4 = Earth
-            //Genetic 5 = Water
-            //Genetic 6 = Fire
-            //Genetic 7 = Wind
-            //Genetic 8 = Void
+            //Genetic 4 = Earth Adeptness
+            //Genetic 5 = Water Adeptness
+            //Genetic 6 = Fire Adeptness
+            //Genetic 7 = Wind Adeptness
 
             if (enemy != null && enemy.Placed)
             {
-                Debug.Log("Attacking card: " + CardData.Genetics[0] +  " vs Resting card: " + enemy.CardData.Genetics[0]);
                 //Ordinal Direction Capture
-                if (CardData.Genetics[0] > enemy.CardData.Genetics[0] && enemy.Team != this.Team)
+                if (enemy.Team != this.Team)
                 {
-                    Debug.Log("Ordinal Capture");
+                    //Genetic 0 = Physical Strength
+                    //Genetic 1 = Spell Strength
+                    //Genetic 2 = Physical Defense 
+                    //Genetic 3 = Magic Defense 
+                    //Genetic 4 = Earth
+                    //Genetic 5 = Water
+                    //Genetic 6 = Fire
+                    //Genetic 7 = Wind
+                    switch (CardData.BrawlType)
+                    {
+                        case BrawlType.PHYSICAL:
+                            if(CardData.Genetics[0] > enemy.CardData.Genetics[2])
+                            {
+                                capturedCards.Add(enemy);
+                                Debug.Log("Physical Capture");
+                                Debug.Log(CardData.Genetics[0] + " > " + enemy.CardData.Genetics[2]);
 
-                    capturedCards.Add(enemy);
+                            }
+                            break;
+                        case BrawlType.SPELL:
+                            if(CardData.Genetics[1] > enemy.CardData.Genetics[3])
+                            {
+                                capturedCards.Add(enemy);
+                                Debug.Log("Spell Capture");
+                                Debug.Log(CardData.Genetics[1] + " > " + enemy.CardData.Genetics[3]);
+
+                            }
+                            break;
+                        case BrawlType.DEFENSE:
+                            if(CardData.Genetics[0] + CardData.Genetics[1] / 2 > enemy.CardData.Genetics[2] + enemy.CardData.Genetics[3] / 2)
+                            {
+                                capturedCards.Add(enemy);
+                                Debug.Log("Defense Capture");
+                                Debug.Log((CardData.Genetics[0] + CardData.Genetics[1] / 2) + " > " + (enemy.CardData.Genetics[2] + enemy.CardData.Genetics[3] / 2));
+
+                            }
+                            break;
+                        case BrawlType.ACE:
+                            if(Math.Max(CardData.Genetics[0], CardData.Genetics[1])> Math.Min(enemy.CardData.Genetics[2], enemy.CardData.Genetics[3]))
+                            {
+                                capturedCards.Add(enemy);
+                                Debug.Log("Ace Capture");
+                                Debug.Log(Math.Max(CardData.Genetics[0], CardData.Genetics[1]) + " > " + Math.Min(enemy.CardData.Genetics[2], enemy.CardData.Genetics[3]));
+                            }
+                            break;
+                        default:
+                            Debug.Log("Unknown BrawlType.");
+                            break;
+                    }
+
+
                 }
 
             }

@@ -99,6 +99,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
         List<Card> capturedCards = new List<Card>();
         List<KeyValuePair<Card, bool>> sameRuleCards = new List<KeyValuePair<Card, bool>>();
         List<KeyValuePair<Card, int>> plusRuleCards = new List<KeyValuePair<Card, int>>();
+        System.Random random = new System.Random();
 
         // Cardinal Direction Capture (Side)
         for (int i = 0; i < sides.Length; i++)
@@ -137,7 +138,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
             }
         }
 
-        // Ordinal Direction Capture (Corner)
+        // Ordinal Direction Search (Corner)
         for (int i = 0; i < corners.Length; i++)
         {
             //Getting opposite corner of of enemy
@@ -153,60 +154,75 @@ public class Card : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
 
             if (enemy != null && enemy.Placed)
             {
+                int attackingPower;
+                int restingPower;
                 //Ordinal Direction Capture
                 if (enemy.Team != this.Team)
                 {
-                    //Genetic 0 = Physical Strength
-                    //Genetic 1 = Spell Strength
-                    //Genetic 2 = Physical Defense 
-                    //Genetic 3 = Magic Defense 
-                    //Genetic 4 = Earth
-                    //Genetic 5 = Water
-                    //Genetic 6 = Fire
-                    //Genetic 7 = Wind
                     switch (CardData.BrawlType)
                     {
                         case BrawlType.PHYSICAL:
-                            if(CardData.Genetics[0] > enemy.CardData.Genetics[2])
+                            attackingPower = (CardData.Genetics[0] << 3) | random.Next(0, 8);
+                            restingPower = (enemy.CardData.Genetics[2] << 3) | random.Next(0, 8);
+                            if(attackingPower > restingPower)
                             {
                                 capturedCards.Add(enemy);
                                 Debug.Log("Physical Capture");
-                                Debug.Log(CardData.Genetics[0] + " > " + enemy.CardData.Genetics[2]);
+                                Debug.Log(attackingPower + " vs " + restingPower);
 
+                            }
+                            else
+                            {
+                                Debug.Log(attackingPower + " vs " + restingPower);
                             }
                             break;
                         case BrawlType.SPELL:
-                            if(CardData.Genetics[1] > enemy.CardData.Genetics[3])
+                            attackingPower = (CardData.Genetics[1] << 3) | random.Next(0, 8);
+                            restingPower = (enemy.CardData.Genetics[3] << 3) | random.Next(0, 8);
+                            if(attackingPower > restingPower)
                             {
                                 capturedCards.Add(enemy);
                                 Debug.Log("Spell Capture");
-                                Debug.Log(CardData.Genetics[1] + " > " + enemy.CardData.Genetics[3]);
-
+                                Debug.Log(attackingPower + " vs " + restingPower);
+                            }
+                            else
+                            {
+                                Debug.Log(attackingPower + " vs " + restingPower);
                             }
                             break;
                         case BrawlType.DEFENSE:
-                            if(CardData.Genetics[0] + CardData.Genetics[1] / 2 > enemy.CardData.Genetics[2] + enemy.CardData.Genetics[3] / 2)
+                            attackingPower = ((CardData.Genetics[0] + CardData.Genetics[1] / 2) << 3) | random.Next(0, 8);
+                            restingPower = ((enemy.CardData.Genetics[2] + enemy.CardData.Genetics[3] / 2) << 3) | random.Next(0, 8);
+
+                            if(attackingPower > restingPower)
                             {
                                 capturedCards.Add(enemy);
                                 Debug.Log("Defense Capture");
-                                Debug.Log((CardData.Genetics[0] + CardData.Genetics[1] / 2) + " > " + (enemy.CardData.Genetics[2] + enemy.CardData.Genetics[3] / 2));
-
+                                Debug.Log(attackingPower + " vs " + restingPower);
+                            }
+                            else
+                            {
+                                Debug.Log(attackingPower + " vs " + restingPower);
                             }
                             break;
                         case BrawlType.ACE:
-                            if(Math.Max(CardData.Genetics[0], CardData.Genetics[1])> Math.Min(enemy.CardData.Genetics[2], enemy.CardData.Genetics[3]))
+                            attackingPower = Math.Max(CardData.Genetics[0], CardData.Genetics[1]) << 3 | random.Next(0,8);
+                            restingPower = Math.Min(enemy.CardData.Genetics[2], enemy.CardData.Genetics[3]) << 3 | random.Next(0,8);
+                            if(attackingPower > restingPower)
                             {
                                 capturedCards.Add(enemy);
                                 Debug.Log("Ace Capture");
-                                Debug.Log(Math.Max(CardData.Genetics[0], CardData.Genetics[1]) + " > " + Math.Min(enemy.CardData.Genetics[2], enemy.CardData.Genetics[3]));
+                                Debug.Log(attackingPower + " vs " + restingPower);
+                            }
+                            else
+                            {
+                                Debug.Log(attackingPower + " vs " + restingPower);
                             }
                             break;
                         default:
                             Debug.Log("Unknown BrawlType.");
                             break;
                     }
-
-
                 }
 
             }

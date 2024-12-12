@@ -58,6 +58,18 @@ MonoBehaviour:
     m_Localized: Create
     m_Metadata:
       m_Items: []
+  - m_Id: 273364389525970944
+    m_Localized: "Login\t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 315832986688806912
+    m_Localized: Connect Web3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 316108088764522496
+    m_Localized: Transfer
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

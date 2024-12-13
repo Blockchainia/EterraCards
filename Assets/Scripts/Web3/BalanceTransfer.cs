@@ -14,7 +14,7 @@ using System.Threading;
 using System;
 using LocalExt = Substrate.Polkadot.NET.NetApiExt.Generated;
 
-namespace Eterraverse.DirectBalanceTransfer
+namespace Assets.Scripts
 {
   public class BalanceTransfer : Singleton<BalanceTransfer>
   {
@@ -43,11 +43,11 @@ namespace Eterraverse.DirectBalanceTransfer
         MiniSecretBob.GetPair().Public.Key);
 
     private static string NodeUrl = "ws://127.0.0.1:9944";
-
+    private static LocalExt.SubstrateClientExt client;
     public static async Task Main(string[] args)
     {
       // Instantiate the client and connect to the Node
-      LocalExt.SubstrateClientExt client = await InstantiateClientAndConnectAsync();
+      client = await InstantiateClientAndConnectAsync();
 
       if (!client.IsConnected)
       {
@@ -67,9 +67,14 @@ namespace Eterraverse.DirectBalanceTransfer
 
     }
 
+    public async void ButtoClickTransfer()
+    {
+      await SubmitTransfer(client);
+    }
+
     public async void InitializeClient()
     {
-      LocalExt.SubstrateClientExt client = await InstantiateClientAndConnectAsync();
+      client = await InstantiateClientAndConnectAsync();
 
       if (!client.IsConnected)
       {
@@ -80,64 +85,89 @@ namespace Eterraverse.DirectBalanceTransfer
     }
     public static async Task SubmitTransfer(LocalExt.SubstrateClientExt client)
     {
+      if (client == null || !client.IsConnected)
+      {
+        Debug.LogError("Client is null or not connected!");
+        return;
+      }
+
       var accountAlice = new AccountId32();
       accountAlice.Create(Utils.GetPublicKeyFrom(Alice.Value));
 
       var accountBob = new AccountId32();
       accountBob.Create(Utils.GetPublicKeyFrom(Bob.Value));
 
-      // Get Alice's Balance
-      var accountInfoAlice = await client.SystemStorage.Account(accountAlice, CancellationToken.None);
-      Debug.Log("Alice Free Balance before transaction = " + accountInfoAlice.Data.Free.Value.ToString());
+      // Validate public keys
+      Debug.Log($"Alice Public Key: {Utils.GetPublicKeyFrom(Alice.Value)}");
+      Debug.Log($"Bob Public Key: {Utils.GetPublicKeyFrom(Bob.Value)}");
 
-      // Get Bob's Balance
+      // Validate balances before the transaction
+      var accountInfoAlice = await client.SystemStorage.Account(accountAlice, CancellationToken.None);
+      Debug.Log("Alice Free Balance before transaction: " + accountInfoAlice.Data.Free.Value);
+
       var accountInfoBob = await client.SystemStorage.Account(accountBob, CancellationToken.None);
-      Debug.Log("Bob Free Balance before transaction = {balance} = " + accountInfoBob.Data.Free.Value.ToString());
+      Debug.Log("Bob Free Balance before transaction: " + accountInfoBob.Data.Free.Value);
 
       // Instantiate a MultiAddress for Bob
       var multiAddressBob = new EnumMultiAddress();
       multiAddressBob.Create(MultiAddress.Id, accountBob);
 
-      // Amount to be transferred
+      // Validate multiAddressBob
+      Debug.Log($"MultiAddressBob: {multiAddressBob}");
+
+      // Amount to be transferred (ensure it fits Compact<u128> range)
       var amount = new BaseCom<U128>();
-      amount.Create(190000);
+      amount.Create(19000); // Validate if this fits the runtime constraints
 
-      // Create Extrinsic Method to be transmitted
-      var extrinsicMethod =
-          BalancesCalls.Transfer(multiAddressBob, amount);
+      if (amount == null || amount.Value <= 0)
+      {
+        Debug.LogError("Invalid amount specified.");
+        return;
+      }
+      Debug.Log($"Amount to transfer: {amount.Value}");
 
-      // Post Extrinsic Callback to show balance for both accounts
+      // Create Extrinsic Method
+      var extrinsicMethod = BalancesCalls.Transfer(multiAddressBob, amount);
+
+      if (extrinsicMethod == null)
+      {
+        Debug.LogError("Extrinsic method creation failed.");
+        return;
+      }
+
+      // Submit the extrinsic
       Action<string, ExtrinsicStatus> actionExtrinsicUpdate = (subscriptionId, extrinsicUpdate) =>
-          {
-            // Fire only if state is Ready
-            if (extrinsicUpdate.ExtrinsicState == ExtrinsicState.Ready)
-            {
-              Debug.Log("Firing post transfer Callback");
+      {
+        if (extrinsicUpdate.ExtrinsicState == ExtrinsicState.Ready)
+        {
+          Debug.Log("Firing post-transfer callback...");
 
-              client.SystemStorage.Account(accountAlice, CancellationToken.None).ContinueWith(
-                        (task) =>
-                            Debug.Log("Alice's Free Balance after transaction = " + task.Result.Data.Free.Value)
+          client.SystemStorage.Account(accountAlice, CancellationToken.None).ContinueWith(task =>
+            Debug.Log("Alice's Free Balance after transaction: " + task.Result.Data.Free.Value));
 
-                        );
+          client.SystemStorage.Account(accountBob, CancellationToken.None).ContinueWith(task =>
+            Debug.Log("Bob's Free Balance after transaction: " + task.Result.Data.Free.Value));
+        }
+      };
 
+      try
+      {
+        await client.Author.SubmitAndWatchExtrinsicAsync(
+            actionExtrinsicUpdate,
+            extrinsicMethod,
+            Alice,
+            new ChargeAssetTxPayment(0, 0),
+            128,
+            CancellationToken.None);
 
-              client.SystemStorage.Account(accountBob, CancellationToken.None).ContinueWith(
-                        (task) =>
-                            Debug.Log("Bob's Free Balance after transaction = {balance} = " + task.Result.Data.Free.Value)
-
-                    );
-            }
-          };
-
-      // Alice to Bob Transaction
-      await client.Author.SubmitAndWatchExtrinsicAsync(
-          actionExtrinsicUpdate,
-          extrinsicMethod,
-          Alice, new ChargeAssetTxPayment(0, 0), 128, CancellationToken.None);
-
-
-      // Console.ReadLine();
+        Debug.Log("Transaction submitted successfully.");
+      }
+      catch (Exception ex)
+      {
+        Debug.LogError($"Transaction submission failed: {ex.Message}");
+      }
     }
+
 
     private static async Task<LocalExt.SubstrateClientExt> InstantiateClientAndConnectAsync()
     {

@@ -1709,7 +1709,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &363566024
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4909,7 +4909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3346512825318327547, guid: b3af1c37f4b0531489e257709f57e0ce, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 51.956017
+      value: 51.955994
       objectReference: {fileID: 0}
     - target: {fileID: 3346512825318327547, guid: b3af1c37f4b0531489e257709f57e0ce, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -5720,7 +5720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3346512825318327547, guid: b3af1c37f4b0531489e257709f57e0ce, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 155.86806
+      value: 155.86804
       objectReference: {fileID: 0}
     - target: {fileID: 3346512825318327547, guid: b3af1c37f4b0531489e257709f57e0ce, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -5963,7 +5963,7 @@ PrefabInstance:
     - target: {fileID: 3346512825318327546, guid: b3af1c37f4b0531489e257709f57e0ce, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1211227672}
+      objectReference: {fileID: 1211227675}
     - target: {fileID: 3346512825318327546, guid: b3af1c37f4b0531489e257709f57e0ce, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -5978,7 +5978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3346512825318327546, guid: b3af1c37f4b0531489e257709f57e0ce, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnTransferClicked
+      value: ButtonClickTransfer
       objectReference: {fileID: 0}
     - target: {fileID: 3346512825318327546, guid: b3af1c37f4b0531489e257709f57e0ce, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -5986,7 +5986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3346512825318327546, guid: b3af1c37f4b0531489e257709f57e0ce, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Assets.Scripts.Web3NetworkManager, Assembly-CSharp
+      value: Assets.Scripts.BalanceTransfer, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3346512825318327546, guid: b3af1c37f4b0531489e257709f57e0ce, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -6074,7 +6074,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3346512825318327547, guid: b3af1c37f4b0531489e257709f57e0ce, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 92.37172
+      value: 92.371704
       objectReference: {fileID: 0}
     - target: {fileID: 3346512825318327547, guid: b3af1c37f4b0531489e257709f57e0ce, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6709,7 +6709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3346512825318327547, guid: b3af1c37f4b0531489e257709f57e0ce, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 83.13455
+      value: 83.13452
       objectReference: {fileID: 0}
     - target: {fileID: 3346512825318327547, guid: b3af1c37f4b0531489e257709f57e0ce, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -7210,7 +7210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1211227674}
   - component: {fileID: 1211227673}
-  - component: {fileID: 1211227672}
+  - component: {fileID: 1211227675}
   m_Layer: 0
   m_Name: Web3NetworkManager
   m_TagString: Untagged
@@ -7218,18 +7218,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1211227672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211227671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8f6c6a5c026c4f869a0de5f4e7406fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1211227673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7257,6 +7245,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1211227675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211227671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0859fe6a93b430c80341bb3e4d2606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1235605669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9256,6 +9256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1622147519}
   - component: {fileID: 1622147518}
+  - component: {fileID: 1622147520}
   m_Layer: 0
   m_Name: Web3UIController
   m_TagString: Untagged
@@ -9277,7 +9278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectionStatusLabel: {fileID: 1274620250}
   connectButton: {fileID: 1837467401}
-  web3NetworkManager: {fileID: 1211227672}
+  web3NetworkManager: {fileID: 0}
 --- !u!4 &1622147519
 Transform:
   m_ObjectHideFlags: 0
@@ -9293,6 +9294,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1622147520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622147517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c674ffb83d084438aa334f1aa5c91b1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1630729525
 GameObject:
   m_ObjectHideFlags: 0
@@ -9972,50 +9985,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1740437463
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1740437465}
-  - component: {fileID: 1740437464}
-  m_Layer: 0
-  m_Name: EterraExplorer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1740437464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1740437463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d6156de1d17e4208a089251e885f768, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1740437465
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1740437463}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 997.5263, y: 727.4522, z: 18.524454}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1741067808
 GameObject:
   m_ObjectHideFlags: 0
@@ -13202,4 +13171,3 @@ SceneRoots:
   - {fileID: 1622147519}
   - {fileID: 39479871}
   - {fileID: 1211227674}
-  - {fileID: 1740437465}
